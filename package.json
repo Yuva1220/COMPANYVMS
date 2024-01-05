@@ -2,9 +2,9 @@
   "name": "companyvms",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "node.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node node.js"
   },
   "keywords": [],
   "author": "",
