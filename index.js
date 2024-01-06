@@ -42,33 +42,6 @@ app.get('/', (req, res) => {
   res.send('Welcome to MyVMS API');
 });
 
-/**
- * @swagger
- * path:
- *   /login:
- *     post:
- *       summary: User login
- *       tags:
- *         - Authentication
- *       requestBody:
- *         description: Login credentials
- *         required: true
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                 password:
- *                   type: string
- *       responses:
- *         '200':
- *           description: Login successful
- *         '401':
- *           description: Invalid credentials
- */
-
 app.post('/login', async function (req, res) { //login route
   const { id, password } = req.body;
   await client.connect();
@@ -151,53 +124,6 @@ async function register_VISITOR(_ic, Name, Gender, Nationality, Email, Sector_of
 }
 
 //Register Route Visitor
-
-/**
- * @swagger
- * path:
- *   /register/VISITOR:
- *     post:
- *       summary: Register a new visitor.
- *       tags:
- *         - Visitor
- *       security:
- *         - BearerAuth: []
- *       requestBody:
- *         description: Visitor details
- *         required: true
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 _ic:
- *                   type: string
- *                 Name:
- *                   type: string
- *                 Gender:
- *                   type: string
- *                 Nationality:
- *                   type: string
- *                 Email:
- *                   type: string
- *                 Sector_of_Visit:
- *                   type: string
- *                 Company:
- *                   type: string
- *                 Region:
- *                   type: string
- *                 Phone_Number:
- *                   type: string
- *                 Reason:
- *                   type: string
- *       responses:
- *         '200':
- *           description: Successfully registered a new visitor.
- *         '401':
- *           description: Invalid Token.
- *         '403':
- *           description: Restricted. Only ADMINs are allowed.
- */
 
 app.post('/register/VISITOR', async function(req, res) {
   const {_ic, Name, Gender, Nationality, Email, Sector_of_Visit, Company, Region, Phone_Number, Reason} = req.body;
