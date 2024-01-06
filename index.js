@@ -17,12 +17,7 @@ app.use(express.json());
 // Swagger configuration
 const options = {
   definition: {
-    openapi: '3.0.0',
-    servers: [
-      {
-        url: 'https://COMPANYVMS.azurewebsites.net',
-      },
-    ],          
+    openapi: '3.0.0',         
     info: {
       title: 'MyVMS API',
       version: '1.0.0',
