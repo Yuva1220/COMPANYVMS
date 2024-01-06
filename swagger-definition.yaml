@@ -3,7 +3,7 @@ info:
   title: 'MyVMS API'
   version: '1.0.0'
 servers:
-  - url: https://companyvms.azurewebsites.net
+  - url: https://isassignment.azurewebsites.net
 paths:
   /login:
     post:

@@ -1,4 +1,4 @@
-POST http://COMPANYVMS.azurewebsites.net/login
+POST http://isassignment.azurewebsites.net/login
 Content-Type: application/json
 
 {
@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ### For Visitor
-POST http://COMPANYVMS.azurewebsites.net/register/VISITOR
+POST http://isassignment.azurewebsites.net/register/VISITOR
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0IiwibGV2ZWxfb2ZfY2xlYXJhbmNlIjoiQURNSU4iLCJpYXQiOjE3MDQ0NDQ3MTZ9.UlcJ1Yr5f1MIsNgkiWXS5yncekjlvQF8YC6eXMcGmH4
 
@@ -26,7 +26,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0Iiwib
 }
 
 ### For users
-POST http://COMPANYVMS.azurewebsites.net/register/USERS
+POST http://isassignment.azurewebsites.net/register/USERS
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0IiwibGV2ZWxfb2ZfY2xlYXJhbmNlIjoiQURNSU4iLCJpYXQiOjE3MDQ0OTc4MTF9.Zlfgq-kJ3V2YulPq3xGMPXrXWHKf-1GEw7yXWKjA5m0
 
@@ -40,19 +40,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0Iiwib
 }
 
 ### View Users
-GET http://COMPANYVMS.azurewebsites.net/view/USERS
+GET http://isassignment.azurewebsites.net/view/USERS
 Content-Type: application/json
 
 ### View Visitor
-GET http://COMPANYVMS.azurewebsites.net/view/VISITOR
+GET http://isassignment.azurewebsites.net/view/VISITOR
 Content-Type: application/json
 
 ### View Access Info
-GET http://COMPANYVMS.azurewebsites.net/view/VISITOR/000201090025/access-info
+GET http://isassignment.azurewebsites.net/view/VISITOR/000201090025/access-info
 Content-Type: application/json
 
 ### Delete user
-DELETE http://COMPANYVMS.azurewebsites.net/delete/USERS
+DELETE http://isassignment.azurewebsites.net/delete/USERS
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0IiwibGV2ZWxfb2ZfY2xlYXJhbmNlIjoiQURNSU4iLCJpYXQiOjE3MDQ0OTc4MTF9.Zlfgq-kJ3V2YulPq3xGMPXrXWHKf-1GEw7yXWKjA5m0
 
@@ -66,5 +66,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0Iiwib
 }
 
 ### Logout
-PUT http://COMPANYVMS.azurewebsites.net/logout/01234
+PUT http://isassignment.azurewebsites.net/logout/01234
 Content-Type: application/json
