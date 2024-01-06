@@ -1,0 +1,257 @@
+openapi: '3.0.0'
+info:
+  title: 'MyVMS API'
+  version: '1.0.0'
+paths:
+  /login:
+    post:
+      summary: User login
+      tags:
+        - Authentication
+      requestBody:
+        description: Login credentials
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful
+        '401':
+          description: Invalid credentials
+
+
+  /register/VISITOR:
+    post:
+      summary: Register a new visitor.
+      tags:
+        - Visitor
+      # No security requirements for testing purposes
+      requestBody:
+        description: Visitor details
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _ic:
+                  type: string
+                Name:
+                  type: string
+                Gender:
+                  type: string
+                Nationality:
+                  type: string
+                Email:
+                  type: string
+                Sector_of_Visit:
+                  type: string
+                Company:
+                  type: string
+                Region:
+                  type: string
+                Phone_Number:
+                  type: string
+                Reason:
+                  type: string
+      responses:
+        '200':
+          description: Successfully registered a new visitor.
+        '401':
+          description: Invalid Token.
+        '403':
+          description: Restricted. Only ADMINs are allowed.
+
+
+  /register/USERS:
+    post:
+      summary: Register a new user (staff or security).
+      tags:
+        - User
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: User details
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                level_of_clearance:
+                  type: string
+                Name:
+                  type: string
+                Email:
+                  type: string
+                Phone_Number:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successfully registered a new user.
+        '401':
+          description: Invalid Token.
+        '403':
+          description: Restricted. Only ADMINs are allowed.
+
+
+
+  /view/USERS:
+    get:
+      summary: View all users.
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Successfully retrieved users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    level_of_clearance:
+                      type: string
+                    Name:
+                      type: string
+                    Email:
+                      type: string
+                    Phone_Number:
+                      type: string
+
+  /view/VISITOR:
+    get:
+      summary: View all visitors.
+      tags:
+        - Visitors
+      responses:
+        '200':
+          description: Successfully retrieved visitors.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _ic:
+                      type: string
+                    Name:
+                      type: string
+                    Gender:
+                      type: string
+                    Nationality:
+                      type: string
+                    Email:
+                      type: string
+                    Sector_of_Visit:
+                      type: string
+                    Company:
+                      type: string
+                    Region:
+                      type: string
+                    Phone_Number:
+                      type: string
+                    Reason:
+                      type: string
+
+
+  /view/VISITOR/{_ic}/access-info:
+    get:
+      summary: Get access information for a visitor.
+      tags:
+        - Visitor
+      parameters:
+        - in: path
+          name: _ic
+          required: true
+          description: The IC number of the visitor.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessInfo:
+                    type: string
+        '404':
+          description: Visitor not found
+        '500':
+          description: Internal Server Error
+
+
+  /delete/USERS:
+    delete:
+      summary: Delete a user.
+      tags:
+        - User
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: User details for deletion
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                level_of_clearance:
+                  type: string
+                Name:
+                  type: string
+                Email:
+                  type: string
+                Phone_Number:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: User deleted successfully
+        '401':
+          description: Invalid Token.
+        '403':
+          description: Restricted. Only ADMINs are allowed.
+
+
+  /logout/{id}:
+    put:
+      summary: Logout user.
+      tags:
+        - User
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the user to log out.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Logout successful
+        '401':
+          description: Invalid Token.
+        '500':
+          description: An error occurred during logout.

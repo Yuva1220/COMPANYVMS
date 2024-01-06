@@ -1,0 +1,70 @@
+POST http://COMPANYVMS.azurewebsites.net/login
+Content-Type: application/json
+
+{
+    "id": "01234",
+    "password": "Admin123"
+}
+
+### For Visitor
+POST http://COMPANYVMS.azurewebsites.net/register/VISITOR
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0IiwibGV2ZWxfb2ZfY2xlYXJhbmNlIjoiQURNSU4iLCJpYXQiOjE3MDQ0NDQ3MTZ9.UlcJ1Yr5f1MIsNgkiWXS5yncekjlvQF8YC6eXMcGmH4
+
+{
+    "_ic": "00020123458",
+    "Name": "maya",
+    "Gender": "female",
+    "Nationality": "Malaysian",
+    "Email": "miangmail.com",
+    "Sector_of_Visit": " - ",
+    "Company": " - ",
+    "Region": "KL",
+    "Phone_Number": "0136845657",
+    "Reason": "To meet Cleaner"
+   
+}
+
+### For users
+POST http://COMPANYVMS.azurewebsites.net/register/USERS
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0IiwibGV2ZWxfb2ZfY2xlYXJhbmNlIjoiQURNSU4iLCJpYXQiOjE3MDQ0OTc4MTF9.Zlfgq-kJ3V2YulPq3xGMPXrXWHKf-1GEw7yXWKjA5m0
+
+{
+    "id": "7342", 
+    "level_of_clearance": "Staff", 
+    "Name": "kimi", 
+    "Email": "kimi@gmail.com", 
+    "Phone_Number": "026743672",
+    "password": "kimi123"
+}
+
+### View Users
+GET http://COMPANYVMS.azurewebsites.net/view/USERS
+Content-Type: application/json
+
+### View Visitor
+GET http://COMPANYVMS.azurewebsites.net/view/VISITOR
+Content-Type: application/json
+
+### View Access Info
+GET http://COMPANYVMS.azurewebsites.net/view/VISITOR/000201090025/access-info
+Content-Type: application/json
+
+### Delete user
+DELETE http://COMPANYVMS.azurewebsites.net/delete/USERS
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAxMjM0IiwibGV2ZWxfb2ZfY2xlYXJhbmNlIjoiQURNSU4iLCJpYXQiOjE3MDQ0OTc4MTF9.Zlfgq-kJ3V2YulPq3xGMPXrXWHKf-1GEw7yXWKjA5m0
+
+{
+        "id": "7342", 
+        "level_of_clearance": "Staff",
+        "Name": "kimi",
+        "Email": "kimi@gmail.com",
+        "Phone_Number": "026743672",
+        "password": "kimi123"
+}
+
+### Logout
+PUT http://COMPANYVMS.azurewebsites.net/logout/01234
+Content-Type: application/json
