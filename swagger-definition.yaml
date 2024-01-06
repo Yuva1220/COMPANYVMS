@@ -2,6 +2,8 @@ openapi: '3.0.0'
 info:
   title: 'MyVMS API'
   version: '1.0.0'
+servers:
+  - url: https://companyvms.azurewebsites.net
 paths:
   /login:
     post:
