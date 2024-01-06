@@ -1,19 +1,18 @@
-const { MongoClient } = require('mongodb');
-// or as an es module:
-// import { MongoClient } from 'mongodb'
-
 // Connection URL
-const url = 'mongodb+srv://yraj66770:yuva1220@cluster01.c8zbkfb.mongodb.net/';
-const client = new MongoClient(url);
-const express=require ('express');
+const { MongoClient } = require('mongodb');
+const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
 const port = 3000;
 
 const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc= require('swagger-jsdoc');
+const swaggerJsdoc = require('swagger-jsdoc');
 
-app.use(express.json())
+// Connection URL
+const url = 'mongodb+srv://yraj66770:yuva1220@cluster01.c8zbkfb.mongodb.net/';
+const client = new MongoClient(url);
+
+app.use(express.json());
 
 // Swagger configuration
 const options = {
@@ -27,8 +26,12 @@ const options = {
   apis: ['swagger-definition.yaml'], // Include the file where your Swagger annotations are located
 };
 
-const swaggerSpec = swaggerJsdoc(options);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+try {
+  const swaggerSpec = swaggerJsdoc(options);
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+} catch (error) {
+  console.error('Error generating Swagger spec:', error);
+}
 
 app.get('/', (req, res) => {
   res.send('Welcome to MyVMS API');
@@ -380,7 +383,9 @@ app.put('/logout/:id', (req, res) => {
 });
 
 // Start Server
-app.listen(port, async () => {
+async function startServer() {
   await client.connect();
   console.log(`Server listening at http://localhost:${port}`);
-});
+}
+
+startServer();
