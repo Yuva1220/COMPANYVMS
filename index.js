@@ -18,6 +18,11 @@ app.use(express.json());
 const options = {
   definition: {
     openapi: '3.0.0',
+    servers: [
+      {
+        url: 'https://COMPANYVMS.azurewebsites.net',
+      },
+    ],          
     info: {
       title: 'MyVMS API',
       version: '1.0.0',
